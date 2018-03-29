@@ -20,17 +20,18 @@ _if = (cond) -> cond(_true)(_false)
 _zero  = (f) -> (x) -> x
 _one   = (f) -> (x) -> f x
 _two   = (f) -> (x) -> f f x
-
 _three = (f) -> (x) -> f f f x
-
 _four  = (f) -> (x) -> f f f f x
 
 _successor = (n) -> ((f) ->  (x) -> n(f)(f x))
 
+#_predecessor = (n) -> 
+
+_isZero = (n) -> n((_) -> _false)(_true)
+
 lambdaToNumber = (lambda) -> lambda((x) -> x + 1)(0)
 
-numberToLambda = (num) -> if num is 0 then _zero
-else _successor numberToLambda(num - 1)
+numberToLambda = (num) -> if num is 0 then _zero else _successor numberToLambda(num - 1)
 
 #expr1 = _true
 #expr2 = _true
@@ -56,4 +57,6 @@ console.log (lambdaToBoolean _not(_false)) is true
 #Natural tests
 console.log (lambdaToNumber _four)
 
-console.log lambdaToNumber numberToLambda(6)
+console.log lambdaToNumber numberToLambda 6
+
+console.log lambdaToBoolean _isZero _zero
