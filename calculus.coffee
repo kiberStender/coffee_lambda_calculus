@@ -3,7 +3,7 @@ _true  = (x) -> (y) -> x
 _false = (x) -> (y) -> y
 
 lambdaToBoolean = (_bool) -> _bool(true)(false)
-booleanToLambda = (coffeeNoBoolean) -> if true then _true else _false
+booleanToLambda = (coffeeNoBoolean) -> if coffeeNoBoolean then _true else _false
 
 #Operadores comutativos
 _and = (left) -> (right) -> left(right)(left)
